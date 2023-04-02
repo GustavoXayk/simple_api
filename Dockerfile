@@ -1,0 +1,20 @@
+FROM node:alpine
+
+WORKDIR /usr/app
+
+COPY package*.json ./
+
+ENV API_PORT = 3000
+ENV DB_DATABASE = DB_DATABASE
+ENV DB_HOST  = DB_HOST
+ENV DB_PORT = 5432
+ENV DB_USER = DB_USER
+ENV DB_PASSWORD = DB_PASSWORD
+
+RUN npm install
+
+COPY . .
+
+EXPOSE 3000
+
+CMD ["npm","run","start"]
